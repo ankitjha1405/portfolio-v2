@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Ankit Jha">
+  <rect width="64" height="64" fill="#2ecc71"/>
+  <g fill="#ffffff">
+    <ellipse cx="17.2" cy="47.5" rx="13.0" ry="13.1"/>
+    <ellipse cx="47.6" cy="47.5" rx="13.6" ry="13.1"/>
+  </g>
+  <g fill="#000000">
+    <ellipse cx="13.7" cy="47.2" rx="6.1" ry="6.8"/>
+    <ellipse cx="45.5" cy="47.2" rx="6.1" ry="6.8"/>
+  </g>
+</svg>
