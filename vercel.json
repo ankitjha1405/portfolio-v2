@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    {
+      "source": "/((?!reelforge/|assets/).*)",
+      "has": [{ "type": "host", "value": "reelforge.ankitjha1405.tech" }],
+      "destination": "/reelforge/$1"
+    }
+  ]
+}

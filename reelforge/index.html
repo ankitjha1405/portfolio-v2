@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Faceless Reels Skill · Ankit Jha</title>
+<meta name="description" content="Free Claude Code skill: turn one idea into finished faceless Reels, Shorts and TikToks. It picks the format and style, writes 3 scripts, and renders the video with voice and captions.">
+<link rel="canonical" href="https://reelforge.ankitjha1405.tech/">
+<meta property="og:title" content="Faceless Reels: a free Claude Code skill">
+<meta property="og:description" content="One idea in. Finished vertical video out. Free, no API key.">
+<meta property="og:url" content="https://reelforge.ankitjha1405.tech/">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #2ecc71; --brand-dark: #0e7c3f;
+    --bg: #0b0f0c; --panel: #131a15; --line: #223027; --text: #eef3ef; --mute: #9fb0a5;
+    --code: #0f1511;
+  }
+  * { box-sizing: border-box }
+  html { scroll-behavior: smooth }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.6 Montserrat, system-ui, sans-serif }
+  a { color: var(--brand) }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px }
+  h1, h2, h3 { font-family: Archivo, sans-serif; font-stretch: 112%; line-height: 1.1; margin: 0 }
+  h1 { font-size: clamp(40px, 7vw, 76px); font-weight: 850; letter-spacing: -.02em }
+  h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 10px }
+  h3 { font-size: 19px; font-weight: 750 }
+  .eyebrow { color: var(--brand); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: 13px; margin: 0 0 12px }
+  .lead { color: var(--mute); font-size: 19px; max-width: 560px; margin: 18px 0 28px }
+  section { padding: 72px 0; border-top: 1px solid var(--line) }
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0 }
+  nav a { color: var(--mute); text-decoration: none; font-weight: 600; font-size: 15px }
+  nav a:hover { color: var(--text) }
+  .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; padding: 40px 0 80px }
+  .hero h1 span { color: var(--brand) }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px }
+  .btn { display: inline-block; padding: 14px 22px; border-radius: 12px; font-weight: 700; text-decoration: none; border: 2px solid var(--brand) }
+  .btn.primary { background: var(--brand); color: #04140a }
+  .btn.ghost { color: var(--brand) }
+  .btn:focus-visible, nav a:focus-visible, button:focus-visible { outline: 3px solid #fff; outline-offset: 3px }
+  .phone { justify-self: center; width: min(300px, 80vw); aspect-ratio: 9/16; border-radius: 28px; border: 6px solid #1d2a21; overflow: hidden; background: #000; box-shadow: 0 30px 80px #2ecc7126 }
+  .phone video { width: 100%; height: 100%; object-fit: cover; display: block }
+  .meta { color: var(--mute); font-size: 14px; margin-top: 14px }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; counter-reset: s }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 22px }
+  .steps .card::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--brand); color: #04140a; font-weight: 800; margin-bottom: 14px }
+  .card p { color: var(--mute); margin: 8px 0 0; font-size: 15.5px }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin-top: 28px }
+  .grid .card h3 { font-size: 17px }
+  .tag { display: inline-block; font-size: 12px; color: var(--brand); border: 1px solid #2ecc7155; border-radius: 999px; padding: 2px 9px; margin: 10px 4px 0 0 }
+  ol.install { padding-left: 22px; margin: 24px 0 0 } ol.install li { margin: 0 0 26px }
+  pre { position: relative; background: var(--code); border: 1px solid var(--line); border-radius: 12px; padding: 16px 16px; overflow-x: auto; margin: 10px 0 0; font: 14px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; color: #d6f5e0 }
+  .copy { position: absolute; top: 8px; right: 8px; background: #1b2a20; color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 4px 10px; font: 600 12px Montserrat, sans-serif; cursor: pointer }
+  .prompts { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin-top: 24px }
+  .prompts .card q { display: block; font-weight: 600; quotes: "“" "”" }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px }
+  ul.tips { padding-left: 20px; margin: 10px 0 0 } ul.tips li { margin-bottom: 10px; color: var(--mute) } ul.tips b { color: var(--text) }
+  details { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin-top: 10px }
+  summary { cursor: pointer; font-weight: 700 } details p { color: var(--mute); margin: 10px 0 0 }
+  footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--mute); font-size: 15px }
+  code { font-family: ui-monospace, Menlo, monospace; font-size: .9em; background: var(--code); padding: 1px 6px; border-radius: 6px }
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 36px }
+    .steps { grid-template-columns: 1fr 1fr }
+    .two { grid-template-columns: 1fr }
+  }
+  @media (max-width: 520px) { .steps { grid-template-columns: 1fr } section { padding: 56px 0 } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav aria-label="Main">
+    <a href="https://ankitjha1405.tech/">← Ankit Jha</a>
+    <a href="#install">Install</a>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Free Claude Code skill</p>
+      <h1>One idea in.<br><span>Finished reel</span> out.</h1>
+      <p class="lead">Faceless Reels turns a single sentence into ready-to-post Instagram Reels, YouTube Shorts and TikToks. It picks the video format and art style, writes 3 scripts for you to choose from, then renders the video with AI images, voiceover and captions.</p>
+      <div class="btns">
+        <a class="btn primary" href="/reelforge/faceless-reels.zip" download>Download the skill</a>
+        <a class="btn ghost" href="#how">See how it works</a>
+      </div>
+      <p class="meta">No API key · free image and voice tools · runs on your machine</p>
+    </div>
+    <div class="phone">
+      <video src="/reelforge/sample.mp4" controls playsinline preload="metadata" aria-label="Sample reel made with the skill: a fox who saves one coin a day"></video>
+    </div>
+  </header>
+
+  <section id="how" aria-labelledby="how-h">
+    <p class="eyebrow">How it works</p>
+    <h2 id="how-h">You bring the idea. It acts as the producer.</h2>
+    <div class="steps">
+      <div class="card"><h3>Say the idea</h3><p>One line is enough. Add audience, tone or language if you want.</p></div>
+      <div class="card"><h3>It plans</h3><p>Picks the best format, art style, length and single reel or series. Your choices always win.</p></div>
+      <div class="card"><h3>Pick a script</h3><p>Three scripts, three different angles. Choose one or edit it.</p></div>
+      <div class="card"><h3>Get the video</h3><p>Vertical 1080×1920 mp4 with voice, captions and motion, plus a caption with hashtags.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="formats-h">
+    <p class="eyebrow">10 formats, 13 styles</p>
+    <h2 id="formats-h">The right format for each idea</h2>
+    <p class="lead" style="margin-bottom:0">Each format has its own script and visual rules. The skill picks one for you, or you name it.</p>
+    <div class="grid">
+      <div class="card"><h3>Character story</h3><p>Fables, mysteries, life lessons.</p><span class="tag">3D Cartoon</span><span class="tag">Anime</span><span class="tag">Claymation</span></div>
+      <div class="card"><h3>Collage explainer</h3><p>"Why does X happen", news, business breakdowns.</p><span class="tag">Paper Collage</span></div>
+      <div class="card"><h3>Whiteboard explainer</h3><p>Teach one concept simply, with an analogy.</p><span class="tag">Whiteboard Sketch</span></div>
+      <div class="card"><h3>Top facts countdown</h3><p>"5 things you didn't know", rankings.</p><span class="tag">Cinematic</span><span class="tag">Comic Book</span></div>
+      <div class="card"><h3>What-if 3D short</h3><p>Science what-ifs, the human body, disasters.</p><span class="tag">3D Realistic Render</span></div>
+      <div class="card"><h3>History mini-doc</h3><p>Events, people and origins of things.</p><span class="tag">Archive Film</span></div>
+      <div class="card"><h3>Scary story</h3><p>Urban legends, unsolved mysteries.</p><span class="tag">Dark Fantasy</span><span class="tag">Moody Photo</span></div>
+      <div class="card"><h3>Motivation reel</h3><p>Mindset, discipline, one hard truth.</p><span class="tag">Moody Photo</span><span class="tag">Cinematic</span></div>
+      <div class="card"><h3>Money &amp; data</h3><p>Finance, prices, one striking number.</p><span class="tag">Flat Infographic</span></div>
+      <div class="card"><h3>Tips &amp; how-to</h3><p>Hacks, recipes, step-by-step guides.</p><span class="tag">Cinematic</span><span class="tag">3D Cartoon</span></div>
+    </div>
+  </section>
+
+  <section id="install" aria-labelledby="install-h">
+    <p class="eyebrow">Install · 5 minutes</p>
+    <h2 id="install-h">Set it up once</h2>
+    <p class="lead">You need <a href="https://claude.com/claude-code">Claude Code</a>, Python 3 and ffmpeg. Commands below are for macOS. On Linux, use <code>sudo apt install ffmpeg</code> instead of brew.</p>
+    <ol class="install">
+      <li><strong>Install the free tools</strong>
+        <pre><code>brew install ffmpeg
+pip3 install pillow edge-tts</code></pre></li>
+      <li><strong>Add the skill to Claude Code</strong>
+        <pre><code>curl -L https://reelforge.ankitjha1405.tech/reelforge/faceless-reels.zip -o faceless-reels.zip
+unzip faceless-reels.zip -d ~/.claude/skills/</code></pre>
+        <p class="meta">Or download the zip above and unzip it into <code>~/.claude/skills/</code>.</p></li>
+      <li><strong>Open Claude Code in any folder and ask</strong>
+        <pre><code>make a faceless reel about why cats knock things off tables</code></pre>
+        <p class="meta">Claude shows its plan and 3 scripts. You pick one. Your mp4 lands in <code>./reels/</code>.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="use-h">
+    <p class="eyebrow">Use it your way</p>
+    <h2 id="use-h">Let it decide, or steer it</h2>
+    <div class="prompts">
+      <div class="card"><q>make a reel about how the Great Wall was built</q><p>Full auto. It picks the format, style and length.</p></div>
+      <div class="card"><q>a 5-part scary story series about an abandoned metro station, 45 seconds each</q><p>Series mode. Every episode ends on a cliffhanger into the next.</p></div>
+      <div class="card"><q>whiteboard explainer on compound interest, for college students</q><p>Name the format and the audience; it handles the rest.</p></div>
+      <div class="card"><q>motivation reel in Hindi, use voice hi-IN-MadhurNeural</q><p>Any Edge TTS voice and language works.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="grow-h">
+    <p class="eyebrow">Grow with it</p>
+    <h2 id="grow-h">How to get value from it</h2>
+    <div class="two">
+      <div class="card">
+        <h3>Posting playbook</h3>
+        <ul class="tips">
+          <li><b>Pick one niche and one format.</b> Repeat the same look so people know your page on sight.</li>
+          <li><b>Use series for return viewers.</b> A cliffhanger gives people a reason to follow for part 2.</li>
+          <li><b>Batch on one day.</b> Make a week of reels in one sitting, then schedule them.</li>
+          <li><b>Judge the hook.</b> Choose the script whose first line you would stop scrolling for.</li>
+          <li><b>Use the caption file.</b> Each video comes with a .txt holding a caption and hashtags.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Who it's for</h3>
+        <ul class="tips">
+          <li><b>Creators</b> who want to post daily without being on camera.</li>
+          <li><b>Educators</b> turning lessons into 30-second explainers.</li>
+          <li><b>Founders and marketers</b> testing content angles before spending on editors.</li>
+          <li><b>Storytellers</b> building a character-led series page.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="faq-h">
+    <p class="eyebrow">Good to know</p>
+    <h2 id="faq-h">FAQ</h2>
+    <details><summary>Is it really free?</summary><p>Yes. Images come from Pollinations and the voice from Microsoft Edge TTS, both free. The scripts are written by Claude inside your own Claude Code plan.</p></details>
+    <details><summary>Why does rendering take a few minutes?</summary><p>Free Pollinations images are limited to 1 every 45 seconds, and small images carry their watermark. A free key from <a href="https://enter.pollinations.ai">enter.pollinations.ai</a>, set as <code>POLLINATIONS_KEY</code>, removes both limits.</p></details>
+    <details><summary>Can I post these on Instagram and YouTube?</summary><p>Yes. Platforms ask you to label realistic AI-generated content, so turn on the AI label when you upload. Avoid real people's likeness and brand characters in your ideas.</p></details>
+    <details><summary>Can I change a scene I don't like?</summary><p>Yes. Ask Claude to redo that scene. It edits <code>plan.json</code> and renders again.</p></details>
+    <details><summary>Does it work on Windows?</summary><p>Yes, if Python and ffmpeg are installed and on your PATH. Unzip the skill into <code>%USERPROFILE%\.claude\skills\</code>.</p></details>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">Built by <a href="https://ankitjha1405.tech/">Ankit Jha</a>. Found it useful? Share a reel you made with it.</div>
+</footer>
+
+<script>
+  document.querySelectorAll('pre').forEach(pre => {
+    const b = document.createElement('button');
+    b.className = 'copy'; b.type = 'button'; b.textContent = 'Copy';
+    b.onclick = async () => {
+      try { await navigator.clipboard.writeText(pre.innerText.replace(/Copy$/, '').trim()); b.textContent = 'Copied'; }
+      catch { b.textContent = 'Select & copy'; }
+      setTimeout(() => b.textContent = 'Copy', 1600);
+    };
+    pre.appendChild(b);
+  });
+</script>
+</body>
+</html>
