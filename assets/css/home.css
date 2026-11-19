@@ -2303,3 +2303,115 @@ a.mc-card:hover {
   pointer-events: none;
   cursor: default;
 }
+
+/* ============ AI PROJECTS (inside the featured panel) ============ */
+.mc-ai {
+  margin-top: clamp(110px, 12vw, 190px);
+  padding-top: clamp(56px, 6vw, 88px);
+  border-top: 1px solid rgba(17, 21, 17, 0.1);
+}
+
+.mc-ai-intro {
+  margin: calc(-1 * clamp(12px, 2vw, 28px)) 0 clamp(36px, 4vw, 60px);
+  max-width: 40em;
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(17, 21, 17, 0.66);
+}
+
+.mc-ai-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(28px, 4vw, 64px);
+  row-gap: clamp(64px, 7vw, 110px);
+}
+
+.mc-ai-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+}
+
+.mc-ai-media {
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #101418;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.mc-ai-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+a.mc-ai-card:hover .mc-ai-media,
+a.mc-ai-card:focus-visible .mc-ai-media {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 46px rgba(9, 60, 30, 0.2);
+}
+
+.mc-ai-title {
+  margin: 26px 0 10px;
+  font-family: 'Archivo', sans-serif;
+  font-stretch: 84%;
+  font-weight: 800;
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1.2;
+  color: #111511;
+}
+
+.mc-ai-title span {
+  display: block;
+  margin-top: 4px;
+  font-weight: 600;
+  font-size: 0.66em;
+  color: rgba(17, 21, 17, 0.55);
+}
+
+.mc-ai-line {
+  margin: 0 0 18px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(17, 21, 17, 0.7);
+}
+
+.mc-ai-link {
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1.5px solid #111511;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #111511;
+  overflow-wrap: anywhere;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+a.mc-ai-card:hover .mc-ai-link,
+a.mc-ai-card:focus-visible .mc-ai-link {
+  background: #111511;
+  color: #fff;
+}
+
+.mc-ai-link--off {
+  border-color: rgba(17, 21, 17, 0.25);
+  color: rgba(17, 21, 17, 0.55);
+}
+
+@media (max-width: 720px) {
+  .mc-ai-grid {
+    grid-template-columns: 1fr;
+    row-gap: 56px;
+  }
+
+  .mc-ai-media { border-radius: 16px; }
+}

@@ -16,6 +16,10 @@
       { selector: '.mc-featured .mc-eyebrow', delay: 0 },
       { selector: '.mc-featured .mc-section-title', delay: 90 },
       { selector: '.mc-proj', stagger: 90 },
+      { selector: '.mc-ai .mc-eyebrow', delay: 0 },
+      { selector: '.mc-ai .mc-section-title', delay: 90 },
+      { selector: '.mc-ai-intro', delay: 160 },
+      { selector: '.mc-ai-card', stagger: 90 },
       { selector: '.mc-bring-title', delay: 0 },
       { selector: '.mc-bring-item', stagger: 120 },
       { selector: '.mc-about-title', delay: 0 },
@@ -598,6 +602,17 @@
   /* ---- Contact form (shared with the rest of the site, see contact-form.js) ---- */
   if (typeof ContactFormLogic !== 'undefined') {
     ContactFormLogic.init();
+  }
+
+  /* ---- AI project videos: play only while on screen; posters only for reduced motion ---- */
+  if (!reduced && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(({ target, isIntersecting }) => {
+        if (isIntersecting) target.play().catch(() => {});
+        else target.pause();
+      });
+    }, { threshold: 0.35 });
+    document.querySelectorAll('.mc-ai-media video').forEach((v) => io.observe(v));
   }
 
 })();
