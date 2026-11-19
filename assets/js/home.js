@@ -543,7 +543,7 @@
 
       linkEl.href = hasLink ? href : '#';
       linkEl.classList.toggle('is-disabled', !hasLink);
-      linkEl.textContent = hasLink ? (card.dataset.cta || 'View full project') + ' ' : 'Write-up coming soon';
+      linkEl.textContent = hasLink ? (card.dataset.cta || 'View full project') + ' ' : (card.dataset.private ? 'Private build, no public link' : 'Write-up coming soon');
       if (hasLink) {
         const arrow = document.createElement('i');
         arrow.className = 'fas fa-arrow-up';
@@ -604,7 +604,10 @@
     ContactFormLogic.init();
   }
 
-  /* ---- AI project videos: play only while on screen; posters only for reduced motion ---- */
+  /* ---- Project videos: play only while on screen (posters only for reduced motion);
+   * sound comes on while the pointer is over a card. Browsers block unmuted playback
+   * until the visitor has clicked or tapped the page once, so until then the badge says so. */
+  const videos = document.querySelectorAll('.mc-proj-media video, .mc-ai-media video');
   if (!reduced && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach(({ target, isIntersecting }) => {
@@ -612,7 +615,23 @@
         else target.pause();
       });
     }, { threshold: 0.35 });
-    document.querySelectorAll('.mc-ai-media video').forEach((v) => io.observe(v));
+    videos.forEach((v) => io.observe(v));
   }
+  const canSound = () => !navigator.userActivation || navigator.userActivation.hasBeenActive;
+  videos.forEach((v) => {
+    const card = v.closest('a, div');
+    const badge = v.parentElement.querySelector('.mc-sound');
+    const label = (on) => {
+      if (!badge) return;
+      badge.classList.toggle('is-on', on);
+      badge.lastChild.textContent = on ? ' Sound on' : (canSound() ? ' Hover for sound' : ' Click once, then hover for sound');
+    };
+    card.addEventListener('mouseenter', () => {
+      if (!canSound()) return label(false);
+      v.muted = false;
+      v.play().then(() => label(true)).catch(() => { v.muted = true; v.play().catch(() => {}); label(false); });
+    });
+    card.addEventListener('mouseleave', () => { v.muted = true; label(false); });
+  });
 
 })();

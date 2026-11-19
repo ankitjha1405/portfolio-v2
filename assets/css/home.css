@@ -2415,3 +2415,38 @@ a.mc-ai-card:focus-visible .mc-ai-link {
 
   .mc-ai-media { border-radius: 16px; }
 }
+
+/* Product videos inside cards: muted autoplay; sound on hover */
+.mc-proj-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mc-ai-media { position: relative; }
+
+.mc-sound {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(10, 12, 16, 0.72);
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.mc-sound.is-on { background: var(--brand); color: #0b1a10; }
+
+@media (hover: none) {
+  .mc-sound { display: none; }
+}

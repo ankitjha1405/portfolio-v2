@@ -18,7 +18,7 @@ and it runs.
  │                         └───────────────────────────────────────┘             │
  │        → ┌ What can I bring ┐ → ┌ About ┐ → ┌ Contact form ┐                    │
  └────────────────────────────────────────────────────────────────────────────────┘
-   assets/js/home.js: reveals, eyes, project modal, plays AI videos only on screen
+   assets/js/home.js: reveals, eyes, project modal, plays card videos on screen, sound on hover
    reelforge/: separate page served on the reelforge subdomain (vercel.json)
 ```
 
@@ -41,7 +41,7 @@ index.html            all markup — single page
 assets/css/           home.css holds the bulk of the layout and theming
 assets/js/            home.js drives the eyes, parallax, and project modal
 assets/img/           project thumbnails, favicons, photos
-assets/video/         12 s product videos + posters for the AI projects section
+assets/video/         22-26 s product films (HyperFrames) + posters for the project cards
 assets/lottie/        animation data
 scripts/serve.py      no-cache local dev server
 ```
